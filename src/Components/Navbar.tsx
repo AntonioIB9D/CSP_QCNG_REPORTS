@@ -1,3 +1,38 @@
+import { Image } from "@heroui/react";
+import { useBoundStore } from "../Store/BoundStore/BoundStore";
+import { useNavigate } from "react-router-dom";
+
 export default function Navbar() {
-  return <div className="w-full bg-[#D22D25]">Navbar</div>;
+  const navigate = useNavigate();
+  const clearUserData = useBoundStore((state) => state.clearUserData);
+
+  const handleNavigateExit = () => {
+    clearUserData();
+    navigate("/");
+  };
+
+  return (
+    <div className="w-full bg-[#000000] p-2 flex justify-between items-center">
+      <div>
+        <Image
+          alt="CSP LOGO"
+          src="/csp_logo_a.png"
+          width={90}
+          className="rounded-none ml-11"
+        />
+        <p className="text-white text-tiny italic font-bold">
+          The Composite Solution Partner
+        </p>
+      </div>
+      <div className="text-white flex gap-2">
+        <p className="italic">QCNG REPORTS</p> <p>|</p>{" "}
+        <p
+          className="hover:cursor-pointer hover:font-bold"
+          onClick={() => handleNavigateExit()}
+        >
+          Exit
+        </p>
+      </div>
+    </div>
+  );
 }

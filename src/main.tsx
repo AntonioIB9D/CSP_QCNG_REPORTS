@@ -8,6 +8,7 @@ import Layout from "./Components/Layout.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Dashboard from "./Views/Dashboard.tsx";
 import PrivateRoute from "./Components/PrivateRoute.tsx";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 //Query Client
 const queryClient = new QueryClient();

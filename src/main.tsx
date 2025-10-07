@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Dashboard from "./Views/Dashboard.tsx";
 import PrivateRoute from "./Components/PrivateRoute.tsx";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import InspectBox from "./Views/InspectBox.tsx";
 
 //Query Client
 const queryClient = new QueryClient();
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
           {
             path: "dashboard",
             element: <Dashboard />,
+          },
+          {
+            path: "inspectBox",
+            element: <InspectBox />,
           },
         ],
       },

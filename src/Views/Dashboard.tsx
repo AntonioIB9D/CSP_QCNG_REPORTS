@@ -1,12 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchStationData } from "../Services/DataService";
 import CardChart from "../Components/CardChart";
+import { Button } from "@heroui/react";
+import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
+  const navigate = useNavigate();
   const { data: StationData } = useQuery({
     queryKey: ["SearchStationData"],
     queryFn: () => fetchStationData(),
   });
+
+  const handleNavigation = () => {
+    navigate("/csp/inspectBox");
+  };
 
   return (
     <>
@@ -16,8 +23,16 @@ export default function Dashboard() {
         </div>
         <div className="flex justify-between w-full">
           <div className="flex flex-col gap-2">
-            <h1 className="text-4xl font-bold">Monitoreo de producción</h1>
-            <p className="italic text-[#868E96]">Estadistico de defectos</p>
+            <p className="text-4xl font-bold">Estadístico de defectos</p>
+          </div>
+          <div>
+            <Button
+              className="rounded-full font-bold"
+              color="primary"
+              onPress={handleNavigation}
+            >
+              <i className="bi bi-funnel"></i> Búsqueda avanzada
+            </Button>
           </div>
         </div>
       </div>

@@ -1,4 +1,3 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { HeroUIProvider } from "@heroui/react";
 import App from "./App.tsx";
@@ -37,11 +36,9 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <HeroUIProvider>
-        <RouterProvider router={router} />
-      </HeroUIProvider>
-    </QueryClientProvider>
-  </StrictMode>
+  <QueryClientProvider client={queryClient}>
+    <HeroUIProvider>
+      <RouterProvider router={router} />
+    </HeroUIProvider>
+  </QueryClientProvider>
 );

@@ -37,14 +37,21 @@ export default function Dashboard() {
         </div>
       </div>
       <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 justify-between items-center w-full p-2 gap-4">
-        {StationData &&
+        {StationData ? (
           Object.entries(StationData).map(([stationName, defects]) => (
             <CardChart
               key={stationName}
               title={stationName}
               dataDefects={defects}
             />
-          ))}
+          ))
+        ) : (
+          <div className="flex justify-center items-center w-full">
+            <h1 className="font-bold text-4xl text-[#0068FF]">
+              No se han registrado datos el día de hoy ...
+            </h1>
+          </div>
+        )}
       </div>
     </>
   );

@@ -18,3 +18,25 @@ export type AuthState = {
 };
 
 export type BoundedState = AuthState;
+
+export type formDataType = {
+  BoxSelected: string;
+  viewBox: string;
+  startDate: string;
+  endDate: string;
+};
+
+export type defectData = {
+  folio: number;
+  producto: string;
+  defecto: string;
+  zona: string;
+  fecha_rechazo: string;
+};
+
+export type GroupedZoneData = {
+  defecto: string;
+  zona: string;
+  total: number;
+  folio: number;
+};

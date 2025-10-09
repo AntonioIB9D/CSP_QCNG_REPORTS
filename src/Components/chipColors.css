@@ -1,0 +1,727 @@
+/* SD MODEL COLORS*/
+.custom-chip-hx-sdModel-top_left_view {
+  background-color: #e69135;
+  color: #ffffff;
+}
+.custom-chip-hy-sdModel-top_left_view {
+  background-color: #724e6f;
+  color: #ffffff;
+}
+.custom-chip-hz-sdModel-top_left_view {
+  background-color: #ce7c71;
+  color: #ffffff;
+}
+.custom-chip-a1-sdModel-top_left_view {
+  background-color: #94a366;
+  color: #ffffff;
+}
+.custom-chip-d1-sdModel-top_left_view {
+  background-color: #7f588d;
+  color: #ffffff;
+}
+.custom-chip-x1-sdModel-top_left_view {
+  background-color: #795996;
+  color: #ffffff;
+}
+.custom-chip-y1-sdModel-top_left_view {
+  background-color: #1d86b9;
+  color: #ffffff;
+}
+.custom-chip-z1-sdModel-top_left_view {
+  background-color: #8ea3d2;
+  color: #ffffff;
+}
+.custom-chip-ñ2-sdModel-top_left_view {
+  background-color: #4c9929;
+  color: #ffffff;
+}
+.custom-chip-q2-sdModel-top_left_view {
+  background-color: #be6c4b;
+  color: #ffffff;
+}
+.custom-chip-b1-sdModel-top_left_view {
+  background-color: #b92f84;
+  color: #ffffff;
+}
+.custom-chip-e1-sdModel-top_left_view {
+  background-color: #a28fa3;
+  color: #ffffff;
+}
+.custom-chip-u1-sdModel-top_left_view {
+  background-color: #576b99;
+  color: #ffffff;
+}
+.custom-chip-v1-sdModel-top_left_view {
+  background-color: #bc3b3d;
+  color: #ffffff;
+}
+.custom-chip-n2-sdModel-top_left_view {
+  background-color: #b4307c;
+  color: #ffffff;
+}
+.custom-chip-p2-sdModel-top_left_view {
+  background-color: #868f62;
+  color: #ffffff;
+}
+.custom-chip-c1-sdModel-top_left_view {
+  background-color: #cf7658;
+  color: #ffffff;
+}
+.custom-chip-f1-sdModel-top_left_view {
+  background-color: #e1968f;
+  color: #ffffff;
+}
+.custom-chip-r1-sdModel-top_left_view {
+  background-color: #aab466;
+  color: #ffffff;
+}
+.custom-chip-s1-sdModel-top_left_view {
+  background-color: #705390;
+  color: #ffffff;
+}
+.custom-chip-m2-sdModel-top_left_view {
+  background-color: #248bae;
+  color: #ffffff;
+}
+.custom-chip-o2-sdModel-top_left_view {
+  background-color: #be7255;
+  color: #ffffff;
+}
+.custom-chip-hc1lh-sdModel-top_left_view {
+  background-color: #c94147;
+  color: #ffffff;
+}
+.custom-chip-g1-sdModel-top_left_view {
+  background-color: #889760;
+  color: #ffffff;
+}
+.custom-chip-j1-sdModel-top_left_view {
+  background-color: #8c7c87;
+  color: #ffffff;
+}
+.custom-chip-h1-sdModel-top_left_view {
+  background-color: #2d6797;
+  color: #ffffff;
+}
+.custom-chip-k1-sdModel-top_left_view {
+  background-color: #f6ca21;
+  color: #ffffff;
+}
+.custom-chip-i1-sdModel-top_left_view {
+  background-color: #f4a432;
+  color: #ffffff;
+}
+
+.custom-chip-hx-sdModel-top_right_view {
+  background-color: #e69135;
+  color: #ffffff;
+}
+.custom-chip-hy-sdModel-top_right_view {
+  background-color: #724e6f;
+  color: #ffffff;
+}
+.custom-chip-hz-sdModel-top_right_view {
+  background-color: #ce7c71;
+  color: #ffffff;
+}
+.custom-chip-d2-sdModel-top_right_view {
+  background-color: #d77a5d;
+  color: #ffffff;
+}
+.custom-chip-a2-sdModel-top_right_view {
+  background-color: #489b2a;
+  color: #ffffff;
+}
+.custom-chip-y1-sdModel-top_right_view {
+  background-color: #1d86b9;
+  color: #ffffff;
+}
+.custom-chip-z1-sdModel-top_right_view {
+  background-color: #8ea3d2;
+  color: #ffffff;
+}
+.custom-chip-q1-sdModel-top_right_view {
+  background-color: #83649f;
+  color: #ffffff;
+}
+.custom-chip-ñ1-sdModel-top_right_view {
+  background-color: #41986e;
+  color: #ffffff;
+}
+.custom-chip-e2-sdModel-top_right_view {
+  background-color: #8e9f6b;
+  color: #ffffff;
+}
+.custom-chip-b2-sdModel-top_right_view {
+  background-color: #b62e80;
+  color: #ffffff;
+}
+.custom-chip-v1-sdModel-top_right_view {
+  background-color: #c43d43;
+  color: #ffffff;
+}
+.custom-chip-w1-sdModel-top_right_view {
+  background-color: #58a53b;
+  color: #ffffff;
+}
+.custom-chip-p1-sdModel-top_right_view {
+  background-color: #81a7e8;
+  color: #ffffff;
+}
+.custom-chip-n1-sdModel-top_right_view {
+  background-color: #ba3a87;
+  color: #ffffff;
+}
+.custom-chip-f2-sdModel-top_right_view {
+  background-color: #c03b40;
+  color: #ffffff;
+}
+.custom-chip-c2-sdModel-top_right_view {
+  background-color: #48a7e7;
+  color: #ffffff;
+}
+.custom-chip-s1-sdModel-top_right_view {
+  background-color: #765d97;
+  color: #ffffff;
+}
+.custom-chip-t1-sdModel-top_right_view {
+  background-color: #93a4d8;
+  color: #ffffff;
+}
+.custom-chip-o1-sdModel-top_right_view {
+  background-color: #be6c57;
+  color: #ffffff;
+}
+.custom-chip-m1-sdModel-top_right_view {
+  background-color: #f4a641;
+  color: #ffffff;
+}
+.custom-chip-g1-sdModel-top_right_view {
+  background-color: #9a4d19;
+  color: #ffffff;
+}
+.custom-chip-h1-sdModel-top_right_view {
+  background-color: #72af39;
+  color: #ffffff;
+}
+.custom-chip-k1-sdModel-top_right_view {
+  background-color: #e8be1f;
+  color: #ffffff;
+}
+.custom-chip-i1-sdModel-top_right_view {
+  background-color: #ca8b20;
+  color: #ffffff;
+}
+.custom-chip-l1-sdModel-top_right_view {
+  background-color: #3d517b;
+  color: #ffffff;
+}
+.custom-chip-hc1rh-sdModel-top_right_view {
+  background-color: #bb3b3c;
+  color: #ffffff;
+}
+
+.custom-chip-i2-sdModel-back_view {
+  background-color: #e9a333;
+  color: #ffffff;
+}
+.custom-chip-l2-sdModel-back_view {
+  background-color: #688abd;
+  color: #ffffff;
+}
+.custom-chip-h2-sdModel-back_view {
+  background-color: #1d86bd;
+  color: #ffffff;
+}
+.custom-chip-k2-sdModel-back_view {
+  background-color: #ebd02b;
+  color: #ffffff;
+}
+.custom-chip-g2-sdModel-back_view {
+  background-color: #83945c;
+  color: #ffffff;
+}
+.custom-chip-j2-sdModel-back_view {
+  background-color: #807281;
+  color: #ffffff;
+}
+.custom-chip-hc2rh-sdModel-back_view {
+  background-color: #c23944;
+  color: #ffffff;
+}
+.custom-chip-hc2lh-sdModel-back_view {
+  background-color: #c23944;
+  color: #ffffff;
+}
+
+.custom-chip-ñ2-sdModel-left_view {
+  background-color: #f09080;
+  color: #ffffff;
+}
+.custom-chip-q2-sdModel-left_view {
+  background-color: #fabc59;
+  color: #ffffff;
+}
+.custom-chip-n2-sdModel-left_view {
+  background-color: #7e8dd2;
+  color: #ffffff;
+}
+.custom-chip-p2-sdModel-left_view {
+  background-color: #aab58d;
+  color: #ffffff;
+}
+.custom-chip-m2-sdModel-left_view {
+  background-color: #faba58;
+  color: #ffffff;
+}
+.custom-chip-o2-sdModel-left_view {
+  background-color: #ed8d7f;
+  color: #ffffff;
+}
+
+.custom-chip-t2-sdModel-bottom_view {
+  background-color: #7b98d7;
+  color: #ffffff;
+}
+.custom-chip-s2-sdModel-bottom_view {
+  background-color: #8d9a65;
+  color: #ffffff;
+}
+.custom-chip-r2-sdModel-bottom_view {
+  background-color: #f1a43a;
+  color: #ffffff;
+}
+.custom-chip-w2-sdModel-bottom_view {
+  background-color: #c56b53;
+  color: #ffffff;
+}
+.custom-chip-v2-sdModel-bottom_view {
+  background-color: #7b8fd4;
+  color: #ffffff;
+}
+.custom-chip-u2-sdModel-bottom_view {
+  background-color: #45353f;
+  color: #ffffff;
+}
+.custom-chip-z2-sdModel-bottom_view {
+  background-color: #808c59;
+  color: #ffffff;
+}
+.custom-chip-y2-sdModel-bottom_view {
+  background-color: #b39cbe;
+  color: #ffffff;
+}
+.custom-chip-x2-sdModel-bottom_view {
+  background-color: #e69f36;
+  color: #ffffff;
+}
+
+.custom-chip-c2-sdModel-right_view {
+  background-color: #5bb3fb;
+  color: #ffffff;
+}
+.custom-chip-f2-sdModel-right_view {
+  background-color: #ef8f81;
+  color: #ffffff;
+}
+.custom-chip-b2-sdModel-right_view {
+  background-color: #fcbb5d;
+  color: #ffffff;
+}
+.custom-chip-e2-sdModel-right_view {
+  background-color: #b2bf93;
+  color: #ffffff;
+}
+.custom-chip-a2-sdModel-right_view {
+  background-color: #69515f;
+  color: #ffffff;
+}
+.custom-chip-d2-sdModel-right_view {
+  background-color: #e98b7f;
+  color: #ffffff;
+}
+
+.custom-chip-hc2rh-sdModel-corner_view {
+  background-color: #faa9ba;
+  color: #ffffff;
+}
+.custom-chip-hc2lh-sdModel-corner_view {
+  background-color: #faa9ba;
+  color: #ffffff;
+}
+
+/* LD MODEL COLORS*/
+.custom-chip-hx-ldModel-top_left_view {
+  background-color: #f5b165;
+  color: #ffffff;
+}
+.custom-chip-hy-ldModel-top_left_view {
+  background-color: #9aaab5;
+  color: #ffffff;
+}
+.custom-chip-hz-ldModel-top_left_view {
+  background-color: #f1868e;
+  color: #ffffff;
+}
+.custom-chip-a1-ldModel-top_left_view {
+  background-color: #75c2d2;
+  color: #ffffff;
+}
+.custom-chip-d1-ldModel-top_left_view {
+  background-color: #8269a2;
+  color: #ffffff;
+}
+.custom-chip-x1-ldModel-top_left_view {
+  background-color: #846ba2;
+  color: #ffffff;
+}
+.custom-chip-y1-ldModel-top_left_view {
+  background-color: #38bde8;
+  color: #ffffff;
+}
+.custom-chip-z1-ldModel-top_left_view {
+  background-color: #5a78b5;
+  color: #ffffff;
+}
+.custom-chip-b1-ldModel-top_left_view {
+  background-color: #df66a9;
+  color: #ffffff;
+}
+.custom-chip-e1-ldModel-top_left_view {
+  background-color: #df66a9;
+  color: #ffffff;
+}
+.custom-chip-u1-ldModel-top_left_view {
+  background-color: #545e8f;
+  color: #ffffff;
+}
+.custom-chip-v1-ldModel-top_left_view {
+  background-color: #c4514f;
+  color: #ffffff;
+}
+.custom-chip-ñ2-ldModel-top_left_view {
+  background-color: #89db86;
+  color: #ffffff;
+}
+.custom-chip-q2-ldModel-top_left_view {
+  background-color: #d58681;
+  color: #ffffff;
+}
+.custom-chip-c1-ldModel-top_left_view {
+  background-color: #f5ba6a;
+  color: #ffffff;
+}
+.custom-chip-f1-ldModel-top_left_view {
+  background-color: #e57d88;
+  color: #ffffff;
+}
+.custom-chip-r1-ldModel-top_left_view {
+  background-color: #afb879;
+  color: #ffffff;
+}
+.custom-chip-s1-ldModel-top_left_view {
+  background-color: #803464;
+  color: #ffffff;
+}
+.custom-chip-n2-ldModel-top_left_view {
+  background-color: #ae3274;
+  color: #ffffff;
+}
+.custom-chip-p2-ldModel-top_left_view {
+  background-color: #a2ad9d;
+  color: #ffffff;
+}
+.custom-chip-g1-ldModel-top_left_view {
+  background-color: #97a185;
+  color: #ffffff;
+}
+.custom-chip-j1-ldModel-top_left_view {
+  background-color: #9c80a8;
+  color: #ffffff;
+}
+.custom-chip-h1-ldModel-top_left_view {
+  background-color: #5782b9;
+  color: #ffffff;
+}
+.custom-chip-k1-ldModel-top_left_view {
+  background-color: #f4da5d;
+  color: #ffffff;
+}
+.custom-chip-i1-ldModel-top_left_view {
+  background-color: #f18d67;
+  color: #ffffff;
+}
+.custom-chip-m2-ldModel-top_left_view {
+  background-color: #5aa4ef;
+  color: #ffffff;
+}
+.custom-chip-o2-ldModel-top_left_view {
+  background-color: #f4916e;
+  color: #ffffff;
+}
+.custom-chip-hc1lh-ldModel-top_left_view {
+  background-color: #f88aab;
+  color: #ffffff;
+}
+.custom-chip-fl1lh-ldModel-top_left_view {
+  background-color: #6081b7;
+  color: #ffffff;
+}
+.custom-chip-fl1rh-ldModel-top_left_view {
+  background-color: #6081b7;
+  color: #ffffff;
+}
+
+.custom-chip-hx-ldModel-top_right_view {
+  background-color: #abb3a4;
+  color: #ffffff;
+}
+.custom-chip-hy-ldModel-top_right_view {
+  background-color: #587eaf;
+  color: #ffffff;
+}
+.custom-chip-hz-ldModel-top_right_view {
+  background-color: #de76b8;
+  color: #ffffff;
+}
+.custom-chip-s1-ldModel-top_right_view {
+  background-color: #803464;
+  color: #ffffff;
+}
+.custom-chip-y1-ldModel-top_right_view {
+  background-color: #38bde8;
+  color: #ffffff;
+}
+.custom-chip-x1-ldModel-top_right_view {
+  background-color: #9e4b8d;
+  color: #ffffff;
+}
+.custom-chip-g1-ldModel-top_right_view {
+  background-color: #a2b08a;
+  color: #ffffff;
+}
+.custom-chip-z1-ldModel-top_right_view {
+  background-color: #5c81ad;
+  color: #ffffff;
+}
+.custom-chip-fl1lh-ldModel-top_right_view {
+  background-color: #5683c6;
+  color: #ffffff;
+}
+.custom-chip-fl1rh-ldModel-top_right_view {
+  background-color: #5683c6;
+  color: #ffffff;
+}
+.custom-chip-i1-ldModel-top_right_view {
+  background-color: #e9a74e;
+  color: #ffffff;
+}
+.custom-chip-h1-ldModel-top_right_view {
+  background-color: #859bd6;
+  color: #ffffff;
+}
+.custom-chip-q1-ldModel-top_right_view {
+  background-color: #b499df;
+  color: #ffffff;
+}
+.custom-chip-ñ1-ldModel-top_right_view {
+  background-color: #63b1b2;
+  color: #ffffff;
+}
+.custom-chip-d2-ldModel-top_right_view {
+  background-color: #ec8461;
+  color: #ffffff;
+}
+.custom-chip-a2-ldModel-top_right_view {
+  background-color: #5bb657;
+  color: #ffffff;
+}
+.custom-chip-p1-ldModel-top_right_view {
+  background-color: #8ca8ee;
+  color: #ffffff;
+}
+.custom-chip-n1-ldModel-top_right_view {
+  background-color: #bf5d96;
+  color: #ffffff;
+}
+.custom-chip-e2-ldModel-top_right_view {
+  background-color: #99a584;
+  color: #ffffff;
+}
+.custom-chip-b2-ldModel-top_right_view {
+  background-color: #af2e6c;
+  color: #ffffff;
+}
+.custom-chip-t1-ldModel-top_right_view {
+  background-color: #4b74b1;
+  color: #ffffff;
+}
+.custom-chip-o1-ldModel-top_right_view {
+  background-color: #d8787a;
+  color: #ffffff;
+}
+.custom-chip-m1-ldModel-top_right_view {
+  background-color: #f8b065;
+  color: #ffffff;
+}
+.custom-chip-f2-ldModel-top_right_view {
+  background-color: #bf4748;
+  color: #ffffff;
+}
+.custom-chip-c2-ldModel-top_right_view {
+  background-color: #4392cd;
+  color: #ffffff;
+}
+.custom-chip-l1-ldModel-top_right_view {
+  background-color: #9db6f3;
+  color: #ffffff;
+}
+.custom-chip-k1-ldModel-top_right_view {
+  background-color: #fff200;
+  color: #ffffff;
+}
+.custom-chip-v1-ldModel-top_right_view {
+  background-color: #ae3c31;
+  color: #ffffff;
+}
+.custom-chip-w1-ldModel-top_right_view {
+  background-color: #7a895d;
+  color: #ffffff;
+}
+.custom-chip-hc1rh-ldModel-top_right_view {
+  background-color: #f07e79;
+  color: #ffffff;
+}
+
+.custom-chip-i2-ldModel-back_view {
+  background-color: #f3c23f;
+  color: #ffffff;
+}
+.custom-chip-l2-ldModel-back_view {
+  background-color: #c5f7fe;
+  color: #ffffff;
+}
+.custom-chip-h2-ldModel-back_view {
+  background-color: #90c4fe;
+  color: #ffffff;
+}
+.custom-chip-k2-ldModel-back_view {
+  background-color: #fafb6c;
+  color: #ffffff;
+}
+.custom-chip-g2-ldModel-back_view {
+  background-color: #93b463;
+  color: #ffffff;
+}
+.custom-chip-j2-ldModel-back_view {
+  background-color: #e0eaed;
+  color: #ffffff;
+}
+.custom-chip-hc2lh-ldModel-back_view {
+  background-color: #f27867;
+  color: #ffffff;
+}
+.custom-chip-hc2rh-ldModel-back_view {
+  background-color: #f27867;
+  color: #ffffff;
+}
+
+.custom-chip-t2-ldModel-bottom_view {
+  background-color: #6da6e0;
+  color: #ffffff;
+}
+.custom-chip-s2-ldModel-bottom_view {
+  background-color: #aa5884;
+  color: #ffffff;
+}
+.custom-chip-r2-ldModel-bottom_view {
+  background-color: #acce87;
+  color: #ffffff;
+}
+.custom-chip-w2-ldModel-bottom_view {
+  background-color: #f0fabb;
+  color: #ffffff;
+}
+.custom-chip-v2-ldModel-bottom_view {
+  background-color: #f97778;
+  color: #ffffff;
+}
+.custom-chip-u2-ldModel-bottom_view {
+  background-color: #fde174;
+  color: #ffffff;
+}
+.custom-chip-z2-ldModel-bottom_view {
+  background-color: #84a4dd;
+  color: #ffffff;
+}
+.custom-chip-y2-ldModel-bottom_view {
+  background-color: #40bad8;
+  color: #ffffff;
+}
+.custom-chip-x2-ldModel-bottom_view {
+  background-color: #e177b9;
+  color: #ffffff;
+}
+
+.custom-chip-c2-ldModel-right_view {
+  background-color: #4392cd;
+  color: #ffffff;
+}
+.custom-chip-f2-ldModel-right_view {
+  background-color: #faaac3;
+  color: #ffffff;
+}
+.custom-chip-b2-ldModel-right_view {
+  background-color: #ad4665;
+  color: #ffffff;
+}
+.custom-chip-e2-ldModel-right_view {
+  background-color: #afbf96;
+  color: #ffffff;
+}
+.custom-chip-a2-ldModel-right_view {
+  background-color: #9ee389;
+  color: #ffffff;
+}
+.custom-chip-d2-ldModel-right_view {
+  background-color: #de8975;
+  color: #ffffff;
+}
+.custom-chip-fl1rh-ldModel-right_view {
+  background-color: #6081b7;
+  color: #ffffff;
+}
+
+.custom-chip-ñ2-ldModel-left_view {
+  background-color: #9ee389;
+  color: #ffffff;
+}
+.custom-chip-q2-ldModel-left_view {
+  background-color: #fba68a;
+  color: #ffffff;
+}
+.custom-chip-n2-ldModel-left_view {
+  background-color: #e56894;
+  color: #ffffff;
+}
+.custom-chip-p2-ldModel-left_view {
+  background-color: #bdca9f;
+  color: #ffffff;
+}
+.custom-chip-m2-ldModel-left_view {
+  background-color: #69c6f0;
+  color: #ffffff;
+}
+.custom-chip-o2-ldModel-left_view {
+  background-color: #f9897d;
+  color: #ffffff;
+}
+
+.custom-chip-hc2lh-ldModel-corner_view {
+  background-color: #d27997;
+  color: #ffffff;
+}
+.custom-chip-hc2rh-ldModel-corner_view {
+  background-color: #d27997;
+  color: #ffffff;
+}

@@ -29,24 +29,49 @@ export const fetchStationData = async () => {
 //Fetch defects  by Model and view box
 export const fetchDefectsByModel = async (
   model: string,
-  selectedView: string
+  selectedView: string,
+  startDate: string,
+  endDate: string
 ) => {
-  const { data } = await axiosInstance(`/estadistics/${model}/${selectedView}`);
-  const result = defectDataSchemaValidation.safeParse(data);
-  if (!result.success) {
-    console.warn("❌ Datos inválidos o vacíos en P1");
+  if (startDate && endDate) {
+    const { data } = await axiosInstance(
+      `/estadistics/${model}/${selectedView}/${startDate}/${endDate}`
+    );
+    const result = defectDataSchemaValidation.safeParse(data);
+    if (!result.success) {
+      console.warn("❌ Datos inválidos o vacíos en P1");
 
-    // Mostrar errores de Zod con detalle
-    result.error.issues.forEach((err) => {
-      console.error(`🔍 Error en propiedad "${err.path.join(".")}"`);
-      console.error(`📣 Mensaje: ${err.message}`);
-      console.error(`📦 Valor recibido:`, err);
-    });
+      // Mostrar errores de Zod con detalle
+      result.error.issues.forEach((err) => {
+        console.error(`🔍 Error en propiedad "${err.path.join(".")}"`);
+        console.error(`📣 Mensaje: ${err.message}`);
+        console.error(`📦 Valor recibido:`, err);
+      });
 
-    return null;
+      return null;
+    }
+
+    return result.data;
+  } else {
+    const { data } = await axiosInstance(
+      `/estadistics/${model}/${selectedView}`
+    );
+    const result = defectDataSchemaValidation.safeParse(data);
+    if (!result.success) {
+      console.warn("❌ Datos inválidos o vacíos en P1");
+
+      // Mostrar errores de Zod con detalle
+      result.error.issues.forEach((err) => {
+        console.error(`🔍 Error en propiedad "${err.path.join(".")}"`);
+        console.error(`📣 Mensaje: ${err.message}`);
+        console.error(`📦 Valor recibido:`, err);
+      });
+
+      return null;
+    }
+
+    return result.data;
   }
-
-  return result.data;
 };
 
 //Fetch defects by Model, view, and date range

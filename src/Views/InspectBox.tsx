@@ -1,74 +1,47 @@
-import { Button, Checkbox, Select, SelectItem } from "@heroui/react";
+import { Button, Checkbox, DateInput, Select, SelectItem } from "@heroui/react";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { fetchDefectsByModel } from "../Services/DataService";
-
-type formDataType = {
-  BoxSelected: string;
-  viewBox: string;
-  startDate: string;
-  endDate: string;
-};
-
-const availableView = [
-  {
-    key: "Top_Left_View",
-    value: "Top Left View",
-  },
-  {
-    key: "Top_Right_View",
-    value: "Top Right View",
-  },
-  {
-    key: "Back_View",
-    value: "Back View",
-  },
-  {
-    key: "Left_View",
-    value: "Left View",
-  },
-  {
-    key: "Right_View",
-    value: "Right View",
-  },
-  {
-    key: "Bottom_View",
-    value: "Bottom View",
-  },
-  {
-    key: "Corner_View",
-    value: "Corner View",
-  },
-];
+import DefectsView from "../Components/DefectsView";
+import DefectTopList from "../Components/DefectTopList";
+import ViewBox from "../Components/ViewBox";
+import type { formDataType } from "../Types/types";
+import { availableView } from "../Data/data";
+import { CalendarDate } from "@internationalized/date";
 
 export default function InspectBox() {
   const [BoxSelected, setBoxSelected] = useState("");
   const [viewBox, setViewBox] = useState("");
-  const { handleSubmit, control, register } = useForm({
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setendDate] = useState("");
+  const { handleSubmit, control } = useForm({
     defaultValues: {
       BoxSelected: "SD", // ← Esto activa el checkbox de CA por defecto
       viewBox: "",
-      startDate: "",
+      startDate: "", // Use string format for defaultValue
       endDate: "",
     },
   });
 
   //UseQuery para obtener la data SD/LD con View Box
   const { data: getDefectsByModel } = useQuery({
-    queryKey: ["defectsByModel", BoxSelected, viewBox],
-    queryFn: () => fetchDefectsByModel(BoxSelected, viewBox),
+    queryKey: ["defectsByModel", BoxSelected, viewBox, startDate, endDate],
+    queryFn: () =>
+      fetchDefectsByModel(BoxSelected, viewBox, startDate, endDate),
   });
 
   const checkData = async (data: formDataType) => {
     if (data.BoxSelected === "SD") {
-      console.log("Se seleccionó Short Deck");
-      console.log(data.BoxSelected);
-      console.log(data.viewBox);
       setBoxSelected(data.BoxSelected);
       setViewBox(data.viewBox);
+      setStartDate(data.startDate ?? "");
+      setendDate(data.endDate ?? "");
     } else {
-      console.log("Se seleccionó Long Deck");
+      setBoxSelected(data.BoxSelected);
+      setViewBox(data.viewBox);
+      setStartDate(data.startDate ?? "");
+      setendDate(data.endDate ?? "");
     }
   };
 
@@ -139,75 +112,109 @@ export default function InspectBox() {
           </div>
           <div className="border-b-3 border-[#E0E0E0] border-dashed mt-3" />
 
-          <div className="flex flex-col flex-wrap gap-4 w-full mt-4">
+          <div className="flex flex-col flex-wrap gap-4 w-full">
             <div className="flex flex-col flex-wrap gap-4 w-full mt-4">
               <p className="italic text-[#868E96] font-bold">Date range:</p>
               <div className="flex items-center gap-4">
-                <label htmlFor="startDate">Start:</label>
-                <input
-                  id="startDate"
-                  className="w-full h-10 rounded-full p-4 border border-[#E0E0E0] bg-white"
-                  placeholder="MM/DD/YYYY"
-                  type="text"
-                  {...register("startDate")}
+                <Controller
+                  control={control}
+                  name="startDate"
+                  render={({ field }) => (
+                    <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+                      <DateInput
+                        className="max-w-sm"
+                        label="Start:"
+                        labelPlacement="outside-left"
+                        onChange={(date) => field.onChange(date?.toString())}
+                        value={
+                          field.value
+                            ? new CalendarDate(
+                                Number(field.value.split("-")[0]),
+                                Number(field.value.split("-")[1]),
+                                Number(field.value.split("-")[2])
+                              )
+                            : new CalendarDate(2025, 9, 10)
+                        }
+                      />
+                    </div>
+                  )}
                 />
               </div>
             </div>
           </div>
 
-          <div className="flex flex-col flex-wrap gap-4 w-full mt-4">
+          <div className="flex flex-col flex-wrap gap-4 w-full">
             <div className="flex flex-col flex-wrap gap-4 w-full mt-4">
               <div className="flex items-center gap-4">
-                <label htmlFor="startDate">End:</label>
-                <input
-                  id="startDate"
-                  className="w-full h-10 rounded-full p-4 border border-[#E0E0E0] bg-white"
-                  placeholder="MM/DD/YYYY"
-                  type="text"
-                  {...register("endDate")}
+                <Controller
+                  control={control}
+                  name="endDate"
+                  render={({ field }) => (
+                    <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+                      <DateInput
+                        className="max-w-sm"
+                        label="End:"
+                        labelPlacement="outside-left"
+                        placeholderValue={new CalendarDate(2025, 9, 10)}
+                        onChange={(date) => field.onChange(date?.toString())}
+                        value={
+                          field.value
+                            ? new CalendarDate(
+                                Number(field.value.split("-")[0]),
+                                Number(field.value.split("-")[1]),
+                                Number(field.value.split("-")[2])
+                              )
+                            : new CalendarDate(2025, 9, 10)
+                        }
+                      />
+                    </div>
+                  )}
                 />
               </div>
             </div>
           </div>
 
-          <div className="flex justify-center items-center mt-4">
+          <div className="flex justify-center items-center mt-4 w-full">
             <Button
               color="primary"
               type="submit"
-              className="rounded-full font-bold w-32"
+              className="rounded-full font-bold w-full"
             >
               <span className="flex gap-4 justify-center items-center">
-                <i className="bi bi-search"></i> Search
+                Search
               </span>
             </Button>
           </div>
         </form>
       </div>
-      <div className="flex flex-col w-full bg-[#F8F9FA] p-4 rounded-2xl">
-        <div className="flex items-center gap-2">
-          <div className="bg-[#EAF0FE] rounded-xl w-12 h-12 flex justify-center items-center">
-            <i className="bi bi-search text-3xl text-[#0068FF]"></i>
-          </div>
-          <p className="text-xl font-bold">View Box</p>
-        </div>
-      </div>
-      <div className="flex flex-col w-full bg-[#F8F9FA] p-4 rounded-2xl">
-        <div className="flex items-center gap-2">
-          <div className="bg-[#EAF0FE] rounded-xl w-12 h-12 flex justify-center items-center">
-            <i className="bi bi-eye text-3xl text-[#0068FF]"></i>
-          </div>
-          <p className="text-xl font-bold">Defects by View</p>
-          {JSON.stringify(getDefectsByModel)}
-        </div>
-      </div>
-      <div className="flex flex-col w-full bg-[#F8F9FA] p-4 rounded-2xl">
-        <div className="flex items-center gap-2">
-          <div className="bg-[#EAF0FE] rounded-xl w-12 h-12 flex justify-center items-center">
-            <i className="bi bi-clipboard2-x text-3xl text-[#0068FF]"></i>
-          </div>
-          <p className="text-xl font-bold">Defect Top List</p>
-        </div>
-      </div>
+
+      <ViewBox />
+
+      <DefectsView
+        DefectsByModel={
+          getDefectsByModel
+            ? getDefectsByModel.map((defect) => ({
+                ...defect,
+                defecto: defect.defecto ?? "",
+              }))
+            : []
+        }
+        BoxSelected={BoxSelected}
+        viewBox={viewBox}
+      />
+
+      <DefectTopList
+        DefectsByModel={
+          getDefectsByModel
+            ? getDefectsByModel.map((defect) => ({
+                ...defect,
+                defecto: defect.defecto ?? "",
+              }))
+            : []
+        }
+        BoxSelected={BoxSelected}
+        viewBox={viewBox}
+      />
     </div>
   );
 }

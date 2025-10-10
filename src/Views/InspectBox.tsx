@@ -188,7 +188,7 @@ export default function InspectBox() {
         </form>
       </div>
 
-      <ViewBox />
+      <ViewBox BoxSelected={BoxSelected} viewBox={viewBox} />
 
       <DefectsView
         DefectsByModel={

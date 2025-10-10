@@ -54,51 +54,63 @@ export default function DefectTopList({
     }));
 
   return (
-    <div className="flex flex-col w-full bg-[#F8F9FA] p-4 rounded-2xl">
+    <div className="flex flex-col w-full bg-[#F8F9FA] p-4 rounded-2xl gap-4">
       <div className="flex items-center gap-2">
+        <div className="bg-[#EAF0FE] rounded-xl w-12 h-12 flex justify-center items-center">
+          <i className="bi bi-clipboard2-x text-3xl text-[#0068FF]"></i>
+        </div>
+        <p className="text-xl font-bold">Defect Top List</p>
+      </div>
+      <div className="flex flex-col justify-center items-center  gap-2">
         <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-2">
-            <div className="bg-[#EAF0FE] rounded-xl w-12 h-12 flex justify-center items-center">
-              <i className="bi bi-clipboard2-x text-3xl text-[#0068FF]"></i>
-            </div>
-            <p className="text-xl font-bold">Defect Top List</p>
-          </div>
           <div className="overflow-auto scrollbar-hide max-h-[19rem] w-full bg-[#F8F9FA] rounded-3xl">
-            <Table
-              className="max-w-[20rem] lg:max-w-[23rem]"
-              aria-label="Employee information table"
-            >
-              <TableHeader>
-                <TableColumn className="font-bold text-black">Zone</TableColumn>
-                <TableColumn className="font-bold text-black">
-                  Defect Name
-                </TableColumn>
-                <TableColumn className="font-bold text-black">
-                  Incidence cases
-                </TableColumn>
-              </TableHeader>
-              <TableBody>
-                {sortedDefects.map((group, index) => (
-                  <TableRow key={`${group.defecto}-${group.zona}-${index}`}>
-                    <TableCell className="text-pretty">
-                      <Chip
-                        className={`custom-chip-${group.zona
-                          .replace(/\s+/g, "")
-                          .toLocaleLowerCase()}-${selectedModelL}-${selectedZoneL.toLocaleLowerCase()}`}
-                      >
-                        {group.zona}
-                      </Chip>
-                    </TableCell>
-                    <TableCell>
-                      {group.defecto
-                        ? `${group.defecto}`
-                        : "DEFECTO NO DEFINIDO"}
-                    </TableCell>
-                    <TableCell className="text-center">{group.count}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+            {sortedDefects.length === 0 ? (
+              <>
+                <p className="text-[#868E96] font-bold italic">
+                  Search to display top 5 defect list
+                </p>
+              </>
+            ) : (
+              <Table
+                className="max-w-[20rem] lg:max-w-[23rem]"
+                aria-label="Employee information table"
+              >
+                <TableHeader>
+                  <TableColumn className="font-bold text-black">
+                    Zone
+                  </TableColumn>
+                  <TableColumn className="font-bold text-black">
+                    Defect Name
+                  </TableColumn>
+                  <TableColumn className="font-bold text-black">
+                    Incidence cases
+                  </TableColumn>
+                </TableHeader>
+                <TableBody>
+                  {sortedDefects.map((group, index) => (
+                    <TableRow key={`${group.defecto}-${group.zona}-${index}`}>
+                      <TableCell className="text-pretty">
+                        <Chip
+                          className={`custom-chip-${group.zona
+                            .replace(/\s+/g, "")
+                            .toLocaleLowerCase()}-${selectedModelL}-${selectedZoneL.toLocaleLowerCase()}`}
+                        >
+                          <b>{group.zona}</b>
+                        </Chip>
+                      </TableCell>
+                      <TableCell>
+                        {group.defecto
+                          ? `${group.defecto}`
+                          : "DEFECTO NO DEFINIDO"}
+                      </TableCell>
+                      <TableCell className="text-center">
+                        {group.count}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            )}
           </div>
         </div>
       </div>

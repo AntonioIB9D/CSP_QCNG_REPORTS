@@ -13,7 +13,10 @@ export default function Navbar() {
 
   return (
     <div className="w-full bg-[#000000] p-2 flex justify-between items-center">
-      <div>
+      <div
+        onClick={() => navigate("/csp/dashboard")}
+        className="hover:cursor-pointer"
+      >
         <Image
           alt="CSP LOGO"
           src="/csp_logo_a.png"

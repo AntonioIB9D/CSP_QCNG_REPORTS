@@ -21,7 +21,7 @@ export default function Dashboard() {
         <div className="bg-[#F8F9FA] rounded-xl w-14 h-14 flex justify-center items-center">
           <i className="bi bi-activity text-[#0068FF] text-3xl p-2"></i>
         </div>
-        <div className="flex justify-between w-full">
+        <div className="flex flex-wrap justify-between w-full gap-4">
           <div className="flex flex-col gap-2">
             <p className="text-4xl font-bold">Estadístico de defectos</p>
           </div>

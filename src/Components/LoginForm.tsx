@@ -24,7 +24,7 @@ export default function LoginForm() {
       toast.success(`Success Login, Welcome ${userData.usuario}`);
       setTimeout(() => {
         setUserData(userData);
-        navigate(userData ? "/csp/dashboard" : "/");
+        navigate(userData ? "/csp/DefectsMap" : "/");
       }, 3500);
     },
     onError: () => {

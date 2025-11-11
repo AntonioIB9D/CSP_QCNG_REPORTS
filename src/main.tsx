@@ -9,6 +9,7 @@ import Dashboard from "./Views/Dashboard.tsx";
 import PrivateRoute from "./Components/PrivateRoute.tsx";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import InspectBox from "./Views/InspectBox.tsx";
+import DefectsMap from "./Views/DefectsMap.tsx";
 
 //Query Client
 const queryClient = new QueryClient();
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
         path: "/csp",
         element: <PrivateRoute />,
         children: [
+          {
+            path: "DefectsMap",
+            element: <DefectsMap />,
+          },
           {
             path: "dashboard",
             element: <Dashboard />,

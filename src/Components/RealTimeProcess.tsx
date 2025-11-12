@@ -5,7 +5,7 @@ export default function RealTimeProcess() {
         <h1 className="text-[#0068FF] text-2xl font-bold">Real Time process</h1>{" "}
         <p className="text-[#868E96]">(Experimental)</p>
       </span>
-      <div className="bg-[#F8F9FA] rounded-3xl p-2 flex flex-col gap-2">
+      <div className="bg-[#F8F9FA] rounded-2xl p-2 flex flex-col gap-2">
         <p>
           <b>Code:</b> 178294
         </p>

@@ -18,4 +18,11 @@ export const defectDataSchema = z.object({
   fecha_rechazo: z.string(),
 });
 
+const stationDefectsDataSchema = z.record(z.string(), z.number());
+
+export const stationDefectsSchemaValidation = z.record(
+  z.string(),
+  stationDefectsDataSchema
+);
+
 export const defectDataSchemaValidation = z.array(defectDataSchema);

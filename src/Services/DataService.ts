@@ -2,6 +2,7 @@ import axiosInstance from "../lib/axios";
 import {
   defectDataSchemaValidation,
   stationDataSchemaValidation,
+  stationDefectsSchemaValidation,
 } from "../Schemas/stationData.schema";
 
 //Fetch station data
@@ -9,6 +10,28 @@ export const fetchStationData = async () => {
   const { data } = await axiosInstance("/estadistics/data/stationInfo");
 
   const result = stationDataSchemaValidation.safeParse(data);
+
+  if (!result.success) {
+    console.warn("❌ Datos inválidos o vacíos en P1");
+
+    // Mostrar errores de Zod con detalle
+    result.error.issues.forEach((err) => {
+      console.error(`🔍 Error en propiedad "${err.path.join(".")}"`);
+      console.error(`📣 Mensaje: ${err.message}`);
+      console.error(`📦 Valor recibido:`, err);
+    });
+
+    return null;
+  }
+
+  return result.data;
+};
+
+// Fetch total defects by station
+export const fetchTotalDefectsByStations = async () => {
+  const { data } = await axiosInstance("/estadistics/data/stationTotalDefects");
+
+  const result = stationDefectsSchemaValidation.safeParse(data);
 
   if (!result.success) {
     console.warn("❌ Datos inválidos o vacíos en P1");

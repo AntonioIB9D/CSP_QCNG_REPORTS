@@ -1,24 +1,16 @@
-import {
-  Button,
-  Image,
-  Table,
-  TableBody,
-  TableCell,
-  TableColumn,
-  TableHeader,
-  TableRow,
-} from "@heroui/react";
-import { useState } from "react";
+import { Button, Image } from "@heroui/react";
+import { useEffect, useState } from "react";
 import TableDefects from "../Components/TableDefects";
 import RealTimeProcess from "../Components/RealTimeProcess";
 import ProcessTopDefect from "../Components/ProcessTopDefect";
+import { useQuery } from "@tanstack/react-query";
+import { fetchTotalDefectsByStations } from "../Services/DataService";
 
 type Pin = {
   id: string;
   x: number; // porcentaje
   y: number; // porcentaje
   label: string;
-  description: string;
 };
 
 const pins: Pin[] = [
@@ -27,21 +19,43 @@ const pins: Pin[] = [
     x: 13,
     y: 17,
     label: "F.Assembly",
-    description: "Rebaba moldeada: 12, Pintura: 5, Ensamble: 8",
   },
-  { id: "2", x: 52, y: 11, label: "Drill", description: "Defects Data D" },
-  { id: "3", x: 27, y: 10, label: "Paint", description: "Defects Data P" },
+  { id: "2", x: 52, y: 11, label: "Drill" },
+  { id: "3", x: 27, y: 10, label: "Paint" },
   {
     id: "4",
     x: 73,
     y: 30,
     label: "D-Flash",
-    description: "Defects Data FA",
   },
 ];
 
 export default function DefectsMap() {
   const [selectedPin, setSelectedPin] = useState<Pin | null>(null);
+  const [actualValue, setActualValue] = useState<Record<string, number> | null>(
+    null
+  );
+
+  const { data: stationDataDefects } = useQuery({
+    queryKey: ["TotalDefectsByStations"],
+    queryFn: () => fetchTotalDefectsByStations(),
+  });
+
+  console.log(stationDataDefects);
+
+  useEffect(() => {
+    if (selectedPin?.label === "Drill") {
+      setActualValue(stationDataDefects?.["DRILL"] ?? null);
+    } else if (selectedPin?.label === "D-Flash") {
+      setActualValue(stationDataDefects?.["D-FLASH"] ?? null);
+    } else if (selectedPin?.label === "Paint") {
+      setActualValue(stationDataDefects?.["INSP. PINTURA"] ?? null);
+    } else if (selectedPin?.label === "F.Assembly") {
+      setActualValue(stationDataDefects?.["ENSAMBLE FINAL"] ?? null);
+    } else {
+      setActualValue(null);
+    }
+  }, [selectedPin, stationDataDefects]);
 
   return (
     <div className="grid grid-cols-3 gap-6 p-2">
@@ -86,8 +100,20 @@ export default function DefectsMap() {
                 transform: "translate(-50%, -120%)",
               }}
             >
-              <h4 className="font-bold">{selectedPin.label}</h4>
-              <p>{selectedPin.description}</p>
+              <div className="flex gap-2 text-center justify-center items-center bg-[#CFA011]">
+                <h4 className="font-bold">{selectedPin.label}</h4>{" "}
+              </div>
+              <div className="flex flex-col">
+                <p>
+                  <b>Turno 1:</b> {actualValue?.["1"] ?? "Sin registros"}
+                </p>
+                <p>
+                  <b>Turno 2:</b> {actualValue?.["2"] ?? "Sin registros"}
+                </p>
+                <p>
+                  <b>Turno 3:</b> {actualValue?.["3"] ?? "Sin registros"}
+                </p>
+              </div>
               <Button
                 onPress={() => setSelectedPin(null)}
                 className="mt-2 hover:cursor-pointer rounded-3xl h-8 text-md"

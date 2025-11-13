@@ -1,4 +1,12 @@
-export default function ProcessTopDefect() {
+type ProcessTopDefectProps = {
+  stationDataDefects: Record<string, Record<string, number>> | null | undefined;
+};
+
+export default function ProcessTopDefect({
+  stationDataDefects,
+}: ProcessTopDefectProps) {
+  const dflashTotal = stationDataDefects?.["D-FLASH"]?.["1"] || 0;
+
   return (
     <div className="w-full text-center">
       <span className="flex gap-2 justify-center items-center">

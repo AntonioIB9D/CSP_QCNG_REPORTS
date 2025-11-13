@@ -1,6 +1,7 @@
 import axiosInstance from "../lib/axios";
 import {
   defectDataSchemaValidation,
+  registerDataSchema,
   stationDataSchemaValidation,
   stationDefectsSchemaValidation,
 } from "../Schemas/stationData.schema";
@@ -32,6 +33,29 @@ export const fetchTotalDefectsByStations = async () => {
   const { data } = await axiosInstance("/estadistics/data/stationTotalDefects");
 
   const result = stationDefectsSchemaValidation.safeParse(data);
+
+  if (!result.success) {
+    console.warn("❌ Datos inválidos o vacíos en P1");
+
+    // Mostrar errores de Zod con detalle
+    result.error.issues.forEach((err) => {
+      console.error(`🔍 Error en propiedad "${err.path.join(".")}"`);
+      console.error(`📣 Mensaje: ${err.message}`);
+      console.error(`📦 Valor recibido:`, err);
+    });
+
+    return null;
+  }
+
+  return result.data;
+};
+
+export const fetchLastRegisterDefect = async () => {
+  const { data } = await axiosInstance(
+    "/estadistics/data/findLastRegisteredDefect"
+  );
+
+  const result = registerDataSchema.safeParse(data);
 
   if (!result.success) {
     console.warn("❌ Datos inválidos o vacíos en P1");

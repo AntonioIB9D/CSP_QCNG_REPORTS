@@ -1,4 +1,4 @@
-import { Button, Image } from "@heroui/react";
+import { Button, Divider, Image } from "@heroui/react";
 import { useEffect, useState } from "react";
 import TableDefects from "../Components/TableDefects";
 import RealTimeProcess from "../Components/RealTimeProcess";
@@ -41,8 +41,6 @@ export default function DefectsMap() {
     queryFn: () => fetchTotalDefectsByStations(),
   });
 
-  console.log(stationDataDefects);
-
   useEffect(() => {
     if (selectedPin?.label === "Drill") {
       setActualValue(stationDataDefects?.["DRILL"] ?? null);
@@ -61,11 +59,9 @@ export default function DefectsMap() {
     <div className="grid grid-cols-3 gap-6 p-2">
       <div className="relative w-full max-w-4xl mx-auto grid col-span-2">
         <div className="flex justify-center gap-4 mb-4">
-          <div>Estaciones actuales:</div>
-          <p>DFlash</p>
-          <p>Drill</p>
-          <p>Paint</p>
-          <p>Final Assembly</p>
+          <h1 className="text-3xl font-bold text-[#0068FF]">
+            Process Map Layout 920B <i className="bi bi-geo-fill"></i>
+          </h1>
         </div>
 
         <div className="relative w-full">
@@ -93,42 +89,70 @@ export default function DefectsMap() {
 
           {selectedPin && (
             <div
-              className="absolute bg-white border p-4 rounded shadow-lg z-30"
+              className="absolute bg-white border p-3 rounded-2xl shadow-lg z-30"
               style={{
                 left: `${selectedPin.x}%`,
                 top: `${selectedPin.y}%`,
                 transform: "translate(-50%, -120%)",
               }}
             >
-              <div className="flex gap-2 text-center justify-center items-center bg-[#CFA011]">
+              <div className="flex gap-2 text-center justify-center items-center ">
                 <h4 className="font-bold">{selectedPin.label}</h4>{" "}
+                <i className="bi bi-person text-2xl"></i>
               </div>
-              <div className="flex flex-col">
-                <p>
-                  <b>Turno 1:</b> {actualValue?.["1"] ?? "Sin registros"}
-                </p>
-                <p>
-                  <b>Turno 2:</b> {actualValue?.["2"] ?? "Sin registros"}
-                </p>
-                <p>
-                  <b>Turno 3:</b> {actualValue?.["3"] ?? "Sin registros"}
-                </p>
+              <Divider className="mb-2" />
+              <div className="flex flex-col gap-2">
+                <span className="flex gap-2">
+                  {actualValue?.["1"] ? (
+                    <i className="bi bi-check-circle text-[#28A745]"></i>
+                  ) : (
+                    <i className="bi bi-clock-history"></i>
+                  )}
+                  <b>
+                    1<b className="text-sm">st</b> Shift:{" "}
+                  </b>{" "}
+                  {actualValue?.["1"] ?? "No data"}
+                </span>
+                <span className="flex gap-2">
+                  {actualValue?.["2"] ? (
+                    <i className="bi bi-check-circle text-[#28A745]"></i>
+                  ) : (
+                    <i className="bi bi-clock-history"></i>
+                  )}{" "}
+                  <b>
+                    2<b className="text-sm">nd</b> Shift:{" "}
+                  </b>{" "}
+                  {actualValue?.["2"] ?? "No data"}
+                </span>
+                <span className="flex gap-2">
+                  {actualValue?.["3"] ? (
+                    <i className="bi bi-check-circle text-[#28A745]"></i>
+                  ) : (
+                    <i className="bi bi-clock-history"></i>
+                  )}{" "}
+                  <b>
+                    3<b className="text-sm">rd</b> Shift:{" "}
+                  </b>{" "}
+                  {actualValue?.["3"] ?? "No data"}
+                </span>
               </div>
-              <Button
-                onPress={() => setSelectedPin(null)}
-                className="mt-2 hover:cursor-pointer rounded-3xl h-8 text-md"
-                color="danger"
-              >
-                Cerrar
-              </Button>
+              <div className="w-full flex justify-center">
+                <Button
+                  onPress={() => setSelectedPin(null)}
+                  className="mt-2 hover:cursor-pointer rounded-3xl h-8 text-md"
+                  color="danger"
+                >
+                  Cerrar
+                </Button>
+              </div>
             </div>
           )}
         </div>
       </div>
       <div className="w-full flex flex-col justify-center items-center gap-4">
-        <TableDefects />
+        <TableDefects stationDataDefects={stationDataDefects} />
         <RealTimeProcess />
-        <ProcessTopDefect />
+        <ProcessTopDefect stationDataDefects={stationDataDefects} />
       </div>
     </div>
   );

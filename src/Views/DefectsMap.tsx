@@ -39,6 +39,7 @@ export default function DefectsMap() {
   const { data: stationDataDefects } = useQuery({
     queryKey: ["TotalDefectsByStations"],
     queryFn: () => fetchTotalDefectsByStations(),
+    refetchInterval: 10000,
   });
 
   useEffect(() => {
@@ -56,7 +57,7 @@ export default function DefectsMap() {
   }, [selectedPin, stationDataDefects]);
 
   return (
-    <div className="grid grid-cols-3 gap-6 p-2">
+    <div className="grid grid-cols-3 p-4 gap-8 justify-center items-center">
       <div className="relative w-full max-w-4xl mx-auto grid col-span-2">
         <div className="flex justify-center gap-4 mb-4">
           <h1 className="text-3xl font-bold text-[#0068FF]">
@@ -152,7 +153,6 @@ export default function DefectsMap() {
       <div className="w-full flex flex-col justify-center items-center gap-4">
         <TableDefects stationDataDefects={stationDataDefects} />
         <RealTimeProcess />
-        <ProcessTopDefect stationDataDefects={stationDataDefects} />
       </div>
     </div>
   );

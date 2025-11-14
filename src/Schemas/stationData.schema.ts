@@ -18,12 +18,26 @@ export const defectDataSchema = z.object({
   fecha_rechazo: z.string(),
 });
 
-const stationDefectsDataSchema = z.record(z.string(), z.number());
+// Turno → cantidad
+const shiftCountSchema = z.record(z.string(), z.number());
 
-export const stationDefectsSchemaValidation = z.record(
+// Proceso → Turno → cantidad
+const defectsSchema = z.record(z.string(), shiftCountSchema);
+
+// Turno → Defecto → cantidad
+const defectDetailsSchema = z.record(z.string(), z.number());
+
+// Proceso → Turno → Defecto → cantidad
+const reportDataSchema = z.record(
   z.string(),
-  stationDefectsDataSchema
+  z.record(z.string(), defectDetailsSchema)
 );
+
+// Esquema final
+export const stationDefectsSchemaValidation = z.object({
+  Defects: defectsSchema,
+  ReportData: reportDataSchema,
+});
 
 export const defectDataSchemaValidation = z.array(defectDataSchema);
 

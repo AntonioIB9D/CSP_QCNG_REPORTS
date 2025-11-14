@@ -21,8 +21,6 @@ export default function RealTimeProcess() {
     }
   }, [lastDefectRegister]);
 
-  console.log("Box Type: ", boxType);
-
   return (
     <div className="w-full text-center">
       <span className="flex gap-2 justify-center items-center">

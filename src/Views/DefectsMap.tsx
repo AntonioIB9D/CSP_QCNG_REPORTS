@@ -42,15 +42,19 @@ export default function DefectsMap() {
     refetchInterval: 10000,
   });
 
+  console.log(stationDataDefects);
+
   useEffect(() => {
+    if (!stationDataDefects) return;
+
     if (selectedPin?.label === "Drill") {
-      setActualValue(stationDataDefects?.["DRILL"] ?? null);
+      setActualValue(stationDataDefects?.Defects["DRILL"] ?? null);
     } else if (selectedPin?.label === "D-Flash") {
-      setActualValue(stationDataDefects?.["D-FLASH"] ?? null);
+      setActualValue(stationDataDefects?.Defects["D-FLASH"] ?? null);
     } else if (selectedPin?.label === "Paint") {
-      setActualValue(stationDataDefects?.["INSP. PINTURA"] ?? null);
+      setActualValue(stationDataDefects?.Defects["INSP. PINTURA"] ?? null);
     } else if (selectedPin?.label === "F.Assembly") {
-      setActualValue(stationDataDefects?.["ENSAMBLE FINAL"] ?? null);
+      setActualValue(stationDataDefects?.Defects["ENSAMBLE FINAL"] ?? null);
     } else {
       setActualValue(null);
     }

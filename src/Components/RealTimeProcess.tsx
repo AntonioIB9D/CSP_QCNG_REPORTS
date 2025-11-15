@@ -13,6 +13,8 @@ export default function RealTimeProcess() {
     refetchInterval: 10000,
   });
 
+  console.log(lastDefectRegister);
+
   useEffect(() => {
     if (lastDefectRegister?.producto.includes("SD")) {
       setBoxType("SD");
@@ -75,7 +77,7 @@ export default function RealTimeProcess() {
           </div>
           <div className="flex flex-col bg-[#ecedee] p-2 rounded-lg">
             <i className="bi  bi-file-earmark-text text-2xl text-[#17A2B8]"></i>{" "}
-            <b>Defecto</b> {lastDefectRegister?.defecto}
+            <b>Defecto</b> {lastDefectRegister?.defecto ?? "NO DEFINIDO"}
           </div>
           <div className="flex flex-col bg-[#ecedee] p-2 rounded-lg">
             <i className="bi bi-gear text-2xl text-[#DC3545]"></i> <b>Prensa</b>{" "}

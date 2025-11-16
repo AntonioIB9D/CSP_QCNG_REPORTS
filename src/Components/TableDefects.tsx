@@ -6,13 +6,9 @@ import {
   TableHeader,
   TableRow,
 } from "@heroui/react";
-import { table } from "console";
 
-import pdfMake from "pdfmake/build/pdfmake";
-import pdfFonts from "pdfmake/build/vfs_fonts";
-
-// Configurar las fuentes virtuales de pdfMake
-pdfMake.vfs = pdfFonts.vfs;
+import { DefectsReport } from "./DefectsReport";
+import { pdf } from "@react-pdf/renderer";
 
 type TableDefectsProps = {
   stationDataDefects:
@@ -48,11 +44,10 @@ export default function TableDefects({
   const capitalize = (text: string) =>
     text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
 
-  const generateReport = (shift: string) => {
-    if (!stationDataDefects?.ReportData) return;
-
+  const downloadReport = async (shift: string) => {
+    // Operations
+    if (stationDataDefects === null || stationDataDefects === undefined) return;
     const reportByStation: Record<string, Record<string, number>> = {};
-
     Object.entries(stationDataDefects.ReportData).forEach(
       ([station, turnos]) => {
         const defects = turnos[shift];
@@ -63,13 +58,16 @@ export default function TableDefects({
         }
       }
     );
-
     // Defectos de D-FLASH
     const totalDefectosDflash = Object.values(
       reportByStation["D-FLASH"]
     ).reduce((sum, cantidad) => sum + cantidad, 0);
 
+    //Consulta de las estaciones
     const dflashDefects = reportByStation["D-FLASH"];
+    const drillDefects = reportByStation["DRILL"];
+    const eFinalDefects = reportByStation["ENSAMBLE FINAL"];
+    const paintDefects = reportByStation["INSP. PINTURA"];
 
     const defectEntries = Object.entries(dflashDefects).map(
       ([defecto, cantidad]) => ({
@@ -85,8 +83,6 @@ export default function TableDefects({
       0
     );
 
-    const drillDefects = reportByStation["DRILL"];
-
     const defectEntriesDrill = Object.entries(drillDefects).map(
       ([defecto, cantidad]) => ({
         text: `>> ${capitalize(defecto)}: ${cantidad}`,
@@ -99,8 +95,6 @@ export default function TableDefects({
     const totalDefectosEfinal = Object.values(
       reportByStation["ENSAMBLE FINAL"]
     ).reduce((sum, cantidad) => sum + cantidad, 0);
-
-    const eFinalDefects = reportByStation["ENSAMBLE FINAL"];
 
     const defectEntriesEFinal = Object.entries(eFinalDefects).map(
       ([defecto, cantidad]) => ({
@@ -115,8 +109,6 @@ export default function TableDefects({
       reportByStation["INSP. PINTURA"]
     ).reduce((sum, cantidad) => sum + cantidad, 0);
 
-    const paintDefects = reportByStation["INSP. PINTURA"];
-
     const defectEntriesPaint = Object.entries(paintDefects).map(
       ([defecto, cantidad]) => ({
         text: `>> ${capitalize(defecto)}: ${cantidad}`,
@@ -125,107 +117,15 @@ export default function TableDefects({
       })
     );
 
-    const documentDefinition = {
-      content: [
-        {
-          text: "Defects Report",
-          style: "header",
-        },
-        {
-          table: {
-            headerRows: 1,
-            widths: [35, 75],
-            body: [
-              [
-                {
-                  text: `Shift - ${shift}`,
-                  fontSize: 10,
-                  fillColor: "#CFA011",
-                },
-              ],
-            ],
-          },
-          layout: {
-            hLineWidth: () => 0,
-            vLineWidth: () => 0,
-          },
-          margin: [0, -1, 0, 0] as [number, number, number, number],
-        },
-        {
-          text: "D-FLASH STATION",
-          style: "chartTitle",
-          alignment: "center" as const,
-          margin: [0, 20, 0, 0] as [number, number, number, number],
-        },
-        {
-          text: `Total defects reported: ${totalDefectosDflash ?? 0}`,
-          style: "information",
-          margin: [0, 10, 0, 0] as [number, number, number, number],
-        },
-        ...defectEntries,
-        {
-          text: "DRILL STATION",
-          style: "chartTitle",
-          alignment: "center" as const,
-          margin: [0, 20, 0, 0] as [number, number, number, number],
-        },
-        {
-          text: `Total defects reported: ${totalDefectosDrill ?? 0}`,
-          style: "information",
-          margin: [0, 10, 0, 0] as [number, number, number, number],
-        },
-        ...defectEntriesDrill,
-        {
-          text: "PAINT STATION",
-          style: "chartTitle",
-          alignment: "center" as const,
-          margin: [0, 20, 0, 0] as [number, number, number, number],
-        },
-        {
-          text: `Total defects reported: ${totalDefectosIpintura ?? 0}`,
-          style: "information",
-          margin: [0, 10, 0, 0] as [number, number, number, number],
-        },
-        ...defectEntriesPaint,
+    const blob = await pdf(<DefectsReport shift={shift} />).toBlob();
+    const url = URL.createObjectURL(blob);
 
-        {
-          text: "FINAL ASSEMBLY STATION",
-          style: "chartTitle",
-          alignment: "center" as const,
-          margin: [0, 20, 0, 0] as [number, number, number, number],
-        },
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `Defects Report Shift ${shift}.pdf`;
+    link.click();
 
-        {
-          text: `Total defects reported: ${totalDefectosEfinal ?? 0}`,
-          style: "information",
-          margin: [0, 10, 0, 0] as [number, number, number, number],
-        },
-        ...defectEntriesEFinal,
-      ],
-
-      styles: {
-        header: {
-          fontSize: 24,
-          bold: true,
-          color: "#0068FF",
-          margin: [0, 0, 0, 0] as [number, number, number, number],
-        },
-        subheader: {
-          fontSize: 10,
-          color: "#7A7E83",
-          margin: [0, 0, 0, 10] as [number, number, number, number],
-        },
-        chartTitle: {
-          fontSize: 16,
-          bold: true,
-          color: "#28A745",
-        },
-      },
-    };
-
-    pdfMake
-      .createPdf(documentDefinition)
-      .open(/* `Defects Report Shift ${shift}.pdf` */);
+    URL.revokeObjectURL(url); // Limpieza opcional
   };
 
   return (
@@ -249,7 +149,10 @@ export default function TableDefects({
             <TableCell className="text-center">
               <i
                 className="bi bi-file-bar-graph text-lg text-[#0068FF] hover:cursor-pointer"
-                onClick={() => generateReport("1")}
+                onClick={() => {
+                  const shift = "1";
+                  downloadReport(shift);
+                }}
               ></i>
             </TableCell>
           </TableRow>
@@ -259,7 +162,10 @@ export default function TableDefects({
             <TableCell className="text-center">
               <i
                 className="bi bi-file-bar-graph text-lg text-[#0068FF] hover:cursor-pointer"
-                onClick={() => generateReport("2")}
+                onClick={() => {
+                  const shift = "2";
+                  downloadReport(shift);
+                }}
               ></i>
             </TableCell>
           </TableRow>
@@ -269,7 +175,10 @@ export default function TableDefects({
             <TableCell className="text-center">
               <i
                 className="bi bi-file-bar-graph text-lg text-[#0068FF] hover:cursor-pointer"
-                onClick={() => generateReport("3")}
+                onClick={() => {
+                  const shift = "3";
+                  downloadReport(shift);
+                }}
               ></i>
             </TableCell>
           </TableRow>

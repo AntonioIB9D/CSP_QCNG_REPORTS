@@ -13,7 +13,7 @@ export default function RealTimeProcess() {
     refetchInterval: 10000,
   });
 
-  console.log(lastDefectRegister);
+  /*  console.log(lastDefectRegister); */
 
   useEffect(() => {
     if (lastDefectRegister?.producto.includes("SD")) {
@@ -92,12 +92,16 @@ export default function RealTimeProcess() {
             <b>Proceso</b> {lastDefectRegister?.proceso}
           </div>
           <div className="flex flex-col bg-[#ecedee] p-2 rounded-lg">
-            <i className="bi  bi-search text-2xl text-[#B8860B]"></i>{" "}
-            <b>Zona</b> {lastDefectRegister?.zona}
+            <i className="bi bi-search text-2xl text-[#B8860B]"></i> <b>Zona</b>{" "}
+            {lastDefectRegister?.zona}
           </div>
           <div className="flex flex-col bg-[#ecedee] p-2 rounded-lg">
-            <i className="bi  bi-people text-2xl text-[#28A745]"></i>{" "}
+            <i className="bi bi-people text-2xl text-[#28A745]"></i>{" "}
             <b>Usuario</b> {lastDefectRegister?.usuario_alta}
+          </div>
+          <div className="flex flex-col bg-[#ecedee] p-2 rounded-lg">
+            <i className="bi bi-box-seam text-2xl text-[#022F71]"></i>{" "}
+            <b>Festoon</b> C837-1104507413
           </div>
         </div>
       </div>

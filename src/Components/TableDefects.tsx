@@ -7,8 +7,8 @@ import {
   TableRow,
 } from "@heroui/react";
 
-import { DefectsReport } from "./DefectsReport";
-import { pdf } from "@react-pdf/renderer";
+/* import { DefectsReport } from "./DefectsReport";
+import { pdf } from "@react-pdf/renderer"; */
 
 type TableDefectsProps = {
   stationDataDefects:
@@ -23,30 +23,30 @@ type TableDefectsProps = {
 export default function TableDefects({
   stationDataDefects,
 }: TableDefectsProps) {
-  const turno1Total =
+  const shiftOneDefects =
     (stationDataDefects?.Defects["DRILL"]?.["1"] || 0) +
     (stationDataDefects?.Defects["ENSAMBLE FINAL"]?.["1"] || 0) +
     (stationDataDefects?.Defects["INSP. PINTURA"]?.["1"] || 0) +
     (stationDataDefects?.Defects["D-FLASH"]?.["1"] || 0);
 
-  const turno2Total =
+  const shiftTwoDefects =
     (stationDataDefects?.Defects["DRILL"]?.["2"] || 0) +
     (stationDataDefects?.Defects["ENSAMBLE FINAL"]?.["2"] || 0) +
     (stationDataDefects?.Defects["INSP. PINTURA"]?.["2"] || 0) +
     (stationDataDefects?.Defects["D-FLASH"]?.["2"] || 0);
 
-  const turno3Total =
+  const shiftThreeDefects =
     (stationDataDefects?.Defects["DRILL"]?.["3"] || 0) +
     (stationDataDefects?.Defects["ENSAMBLE FINAL"]?.["3"] || 0) +
     (stationDataDefects?.Defects["INSP. PINTURA"]?.["3"] || 0) +
     (stationDataDefects?.Defects["D-FLASH"]?.["3"] || 0);
 
-  const capitalize = (text: string) =>
-    text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+  /*  const capitalize = (text: string) =>
+    text.charAt(0).toUpperCase() + text.slice(1).toLowerCase(); */
 
-  const downloadReport = async (shift: string) => {
-    // Operations
-    if (stationDataDefects === null || stationDataDefects === undefined) return;
+  /*  const downloadReport = async (shift: string) => { */
+  // Operations
+  /*  if (stationDataDefects === null || stationDataDefects === undefined) return;
     const reportByStation: Record<string, Record<string, number>> = {};
     Object.entries(stationDataDefects.ReportData).forEach(
       ([station, turnos]) => {
@@ -57,76 +57,77 @@ export default function TableDefects({
           reportByStation[station] = {};
         }
       }
-    );
-    // Defectos de D-FLASH
-    const totalDefectosDflash = Object.values(
-      reportByStation["D-FLASH"]
-    ).reduce((sum, cantidad) => sum + cantidad, 0);
+    ); */
 
-    //Consulta de las estaciones
-    const dflashDefects = reportByStation["D-FLASH"];
+  // Defectos de D-FLASH
+  /*    const totalDefectosDflash = Object.values(
+      reportByStation["D-FLASH"]
+    ).reduce((sum, cantidad) => sum + cantidad, 0); */
+
+  //Consulta de las estaciones
+  /*  const dflashDefects = reportByStation["D-FLASH"];
     const drillDefects = reportByStation["DRILL"];
     const eFinalDefects = reportByStation["ENSAMBLE FINAL"];
-    const paintDefects = reportByStation["INSP. PINTURA"];
+    const paintDefects = reportByStation["INSP. PINTURA"]; */
 
-    const defectEntries = Object.entries(dflashDefects).map(
+  /* const defectEntries = Object.entries(dflashDefects).map(
       ([defecto, cantidad]) => ({
         text: `>> ${capitalize(defecto)}: ${cantidad}`,
         style: "information",
         margin: [0, 10, 0, 0] as [number, number, number, number],
       })
-    );
+    ); */
 
-    // Defectos de DRILL
-    const totalDefectosDrill = Object.values(reportByStation["DRILL"]).reduce(
+  // Defectos de DRILL
+  /*   const totalDefectosDrill = Object.values(reportByStation["DRILL"]).reduce(
       (sum, cantidad) => sum + cantidad,
       0
-    );
+    ); */
 
-    const defectEntriesDrill = Object.entries(drillDefects).map(
+  /* const defectEntriesDrill = Object.entries(drillDefects).map(
       ([defecto, cantidad]) => ({
         text: `>> ${capitalize(defecto)}: ${cantidad}`,
         style: "information",
         margin: [0, 10, 0, 0] as [number, number, number, number],
       })
-    );
+    ); */
 
-    // Defectos de ENSAMBLE FINAL
-    const totalDefectosEfinal = Object.values(
+  // Defectos de ENSAMBLE FINAL
+  /*  const totalDefectosEfinal = Object.values(
       reportByStation["ENSAMBLE FINAL"]
-    ).reduce((sum, cantidad) => sum + cantidad, 0);
+    ).reduce((sum, cantidad) => sum + cantidad, 0); */
 
-    const defectEntriesEFinal = Object.entries(eFinalDefects).map(
+  /*    const defectEntriesEFinal = Object.entries(eFinalDefects).map(
       ([defecto, cantidad]) => ({
         text: `>> ${capitalize(defecto)}: ${cantidad}`,
         style: "information",
         margin: [0, 10, 0, 0] as [number, number, number, number],
       })
-    );
+    ); */
 
-    // Defectos de INSP. PINTURA
-    const totalDefectosIpintura = Object.values(
+  // Defectos de INSP. PINTURA
+  /*  const totalDefectosIpintura = Object.values(
       reportByStation["INSP. PINTURA"]
-    ).reduce((sum, cantidad) => sum + cantidad, 0);
+    ).reduce((sum, cantidad) => sum + cantidad, 0); */
 
-    const defectEntriesPaint = Object.entries(paintDefects).map(
+  /*    const defectEntriesPaint = Object.entries(paintDefects).map(
       ([defecto, cantidad]) => ({
         text: `>> ${capitalize(defecto)}: ${cantidad}`,
         style: "information",
         margin: [0, 10, 0, 0] as [number, number, number, number],
       })
-    );
+    ); */
 
-    const blob = await pdf(<DefectsReport shift={shift} />).toBlob();
-    const url = URL.createObjectURL(blob);
+  /*  const blob = await pdf(<DefectsReport shift={shift} />).toBlob();
+    const url = URL.createObjectURL(blob); */
 
-    const link = document.createElement("a");
+  /*   const link = document.createElement("a");
     link.href = url;
     link.download = `Defects Report Shift ${shift}.pdf`;
-    link.click();
+    link.click(); */
 
-    URL.revokeObjectURL(url); // Limpieza opcional
-  };
+  /*    URL.revokeObjectURL(url); // Limpieza opcional */
+  /*  }; */
 
   return (
     <div className="w-full text-center">
@@ -145,40 +146,46 @@ export default function TableDefects({
         <TableBody>
           <TableRow key="1">
             <TableCell className="text-center text-md font-bold">1st</TableCell>
-            <TableCell className="text-center text-md">{turno1Total}</TableCell>
+            <TableCell className="text-center text-md">
+              {shiftOneDefects}
+            </TableCell>
             <TableCell className="text-center">
               <i
-                className="bi bi-file-bar-graph text-lg text-[#0068FF] hover:cursor-pointer"
-                onClick={() => {
+                className="bi bi-cloud-arrow-down text-xl text-[#0068FF] hover:cursor-pointer"
+                /* onClick={() => {
                   const shift = "1";
-                  downloadReport(shift);
-                }}
+                   downloadReport(shift); 
+                }} */
               ></i>
             </TableCell>
           </TableRow>
           <TableRow key="2">
             <TableCell className="text-center text-md font-bold">2nd</TableCell>
-            <TableCell className="text-center text-md">{turno2Total}</TableCell>
+            <TableCell className="text-center text-md">
+              {shiftTwoDefects}
+            </TableCell>
             <TableCell className="text-center">
               <i
-                className="bi bi-file-bar-graph text-lg text-[#0068FF] hover:cursor-pointer"
-                onClick={() => {
+                className="bi bi-cloud-arrow-down text-xl text-[#0068FF] hover:cursor-pointer"
+                /* onClick={() => {
                   const shift = "2";
                   downloadReport(shift);
-                }}
+                }} */
               ></i>
             </TableCell>
           </TableRow>
           <TableRow key="3">
             <TableCell className="text-center text-md font-bold">3rd</TableCell>
-            <TableCell className="text-center text-md">{turno3Total}</TableCell>
+            <TableCell className="text-center text-md">
+              {shiftThreeDefects}
+            </TableCell>
             <TableCell className="text-center">
               <i
-                className="bi bi-file-bar-graph text-lg text-[#0068FF] hover:cursor-pointer"
-                onClick={() => {
+                className="bi bi-cloud-arrow-down text-xl text-[#0068FF] hover:cursor-pointer"
+                /*  onClick={() => {
                   const shift = "3";
                   downloadReport(shift);
-                }}
+                }} */
               ></i>
             </TableCell>
           </TableRow>

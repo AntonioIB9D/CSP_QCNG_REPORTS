@@ -2,7 +2,7 @@ import { Button, Divider, Image } from "@heroui/react";
 import { useEffect, useState } from "react";
 import TableDefects from "../Components/TableDefects";
 import RealTimeProcess from "../Components/RealTimeProcess";
-import ProcessTopDefect from "../Components/ProcessTopDefect";
+/* import ProcessTopDefect from "../Components/ProcessTopDefect"; */
 import { useQuery } from "@tanstack/react-query";
 import { fetchTotalDefectsByStations } from "../Services/DataService";
 
@@ -42,7 +42,7 @@ export default function DefectsMap() {
     refetchInterval: 10000,
   });
 
-  console.log(stationDataDefects);
+  /* console.log(stationDataDefects); */
 
   useEffect(() => {
     if (!stationDataDefects) return;
